@@ -1,0 +1,24 @@
+{
+  "name": "backend-cesde",
+  "version": "1.0.0",
+  "description": "Backend del proyectos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "author": "Esteban Durán",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
