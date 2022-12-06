@@ -19,10 +19,10 @@
       <div class="partFooter">
         <h4>Redes sociales</h4>
         <div class="social-media">
-          <i class="bi bi-facebook"></i>
-          <i class="fa-brands fa-twitter"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-youtube"></i>
+          <b-icon id="b-icon" icon="facebook"></b-icon>
+          <b-icon-twitter id="b-icon"></b-icon-twitter>
+          <b-icon id="b-icon" icon="instagram"></b-icon>
+          <b-icon-youtube id="b-icon"></b-icon-youtube>
         </div>
       </div>
     </footer>
@@ -70,7 +70,7 @@ footer {
   width: 70%;
 }
 
-.social-media i {
+.social-media #b-icon {
   font-size: 20px;
   display: inline-block;
   color: #adb6c7;
@@ -86,7 +86,7 @@ footer {
   margin-right: 5px;
 }
 
-.social-media i:hover {
+.social-media #b-icon:hover {
   color: #fff;
   background-color: #1fde82;
   border-color: #1fde82;

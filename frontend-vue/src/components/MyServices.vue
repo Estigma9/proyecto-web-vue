@@ -5,7 +5,7 @@
         <h2 class="titulo">We provide a wide range</h2>
         <div class="contenedor-articulo">
           <div class="articulo" data-aos="zoom-in-right">
-            <i class="fa-solid fa-pen-fancy"></i>
+            <b-icon class="b-icon" icon="vector-pen"></b-icon>
             <h3>Graphic design</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
@@ -16,7 +16,7 @@
           </div>
 
           <div class="articulo" data-aos="zoom-in-right">
-            <i class="fa-solid fa-code"></i>
+            <b-icon class="b-icon" icon="code-slash"></b-icon>
             <h3>Web design</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam,
@@ -27,7 +27,7 @@
           </div>
 
           <div class="articulo" data-aos="zoom-in-right">
-            <i class="fa-solid fa-cog"></i>
+            <b-icon class="b-icon" icon="gear"></b-icon>
             <h3>Video production</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam,
@@ -38,7 +38,7 @@
           </div>
 
           <div class="articulo" data-aos="zoom-in-right">
-            <i class="fa-solid fa-chart-bar"></i>
+            <b-icon class="b-icon" icon="bar-chart"></b-icon>
             <h3>SEO</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam,
@@ -49,7 +49,7 @@
           </div>
 
           <div class="articulo" data-aos="zoom-in-right">
-            <i class="fa-solid fa-chart-pie"></i>
+            <b-icon class="b-icon" icon="pie-chart"></b-icon>
             <h3>Digital Marketing</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam,
@@ -60,7 +60,7 @@
           </div>
 
           <div class="articulo" data-aos="zoom-in-right">
-            <i class="fa-solid fa-comments"></i>
+            <b-icon class="b-icon" icon="chat"></b-icon>
             <h3>Inphografics</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam,
@@ -128,7 +128,7 @@ h1 {
   box-shadow: 0 4px 10px rgba(17, 29, 48, 0.26);
 }
 
-.articulo > i {
+.articulo > .b-icon {
   font-size: 30px;
   color: #fff;
   background: #1fde82;
