@@ -5,11 +5,19 @@
         <div class="contenedor-formularios">
             <!-- Links de los formularios -->
             <ul class="contenedor-tabs">
-               <li class="tab tab-segunda">
+                <li 
+                  @click="selectTab(1)"
+                  :class="{active: currentTab == 1}"
+                  class="tab tab-segunda"
+                >
                     <a href="#iniciar-sesion">Iniciar Sesión</a>
                 </li> 
 
-                <li class="tab tab-primera">
+                <li 
+                  @click="selectTab(2)"
+                  :class="{active: currentTab == 2}"
+                  class="tab tab-primera"
+                >
                     <a href="#registrarse">Registrarse</a>
                 </li> 
             </ul>
@@ -17,12 +25,13 @@
             <!-- Contenido de los Formularios -->
             <!-- <div class="contenido-tab"> -->
             <!-- Iniciar Sesión -->
-            <div id="iniciar-sesion">
+            <div v-if="currentTab == 1" id="iniciar-sesion">
                 <h1>Iniciar Sesión</h1>
                 <form action="#" method="post">
                     <div class="contenedor-input">
                         <label class="label"> <span class="req"></span> </label>
                         <input 
+                            v-model="login.email"
                             type="email"
                             required
                             placeholder="Email"
@@ -32,6 +41,7 @@
                     <div class="contenedor-input">
                         <label class="label"> <span class="req"></span> </label>
                         <input 
+                            v-model="login.password"
                             type="password"
                             required
                             placeholder="Password"
@@ -40,6 +50,7 @@
 
                     <p class="forgot"> <a href="#">¿Se te olvidó la contraseña?</a></p>
                     <input 
+                        @click.prevent="loginUser"
                         type="submit"
                         class="button button-block"
                         value="Iniciar Sesión"
@@ -49,13 +60,14 @@
 
 
             <!-- Registrarse -->
-            <div id="registrarse">
+            <div v-if="currentTab == 2" id="registrarse">
                 <h1>Registrarse</h1>
                 <form action="#" method="post">
                     <div class="fila-arriba">
                         <div class="contenedor-input">
                             <label> <span class="req"></span> </label>
                             <input 
+                                v-model="register.username"
                                 type="text"
                                 required
                                 placeholder="Nombre"
@@ -65,6 +77,7 @@
                         <div class="contenedor-input">
                             <label> <span class="req"></span> </label>
                             <input 
+                                v-model="register.userlastname"
                                 type="text"
                                 required
                                 placeholder="Apellidos"
@@ -75,6 +88,7 @@
                     <div class="contenedor-input">
                         <label class="label"> <span class="req"></span> </label>
                         <input 
+                            v-model="register.email"
                             type="email"
                             required
                             placeholder="Email"
@@ -84,6 +98,7 @@
                     <div class="contenedor-input">
                         <label class="label"> <span class="req"></span> </label>
                         <input 
+                            v-model="register.password"
                             type="password"
                             required
                             placeholder="Password"
@@ -93,6 +108,7 @@
                     <div class="contenedor-input">
                         <label class="label"> <span class="req"></span> </label>
                         <input 
+                            v-model="register.passwordcompare"
                             type="password"
                             required
                             placeholder="Repetir Contraseña"
@@ -100,6 +116,7 @@
                     </div>
 
                     <input 
+                        @click.prevent="registerUser"
                         type="submit"
                         class="button button-block"
                         value="Registrarse"
@@ -110,7 +127,8 @@
 
 
         <pre>
-            
+          {{login}}
+          {{register}}    
         </pre>
         
     </div>
@@ -118,14 +136,60 @@
 
 
 <script>
+import swal from 'sweetalert';
+
 export default {
     name: 'TheLogin',
     data() {
         return{
+          currentTab: 1,
+          login: {
+            email: "",
+            password: "",
+          },
+          register: {
+            username: "",
+            userlastname: "",
+            email: "",
+            password: "",
+            passwordcompare: "",
+          },
 
         }
-        
     },
+
+    methods: {
+      selectTab(selectTab) {
+        this.currentTab = selectTab;
+      },
+
+      async loginUser() {
+        try {
+          let response = await this.$http.post("/api/user/login", this.login);
+          console.log(response.data);
+          let token = response.data.tokenReturn;      
+          let user = response.data.user;
+
+          localStorage.setItem("jwt", token);
+          localStorage.setItem("user", JSON.stringify(user));
+
+          if (token) {
+            swal("Éxito!!", "Login correcto", "success");
+            this.$router.push("/checked");
+          }
+        } catch (e) {
+          swal("Oops!", "Algo salió mal!", "error");
+        }
+      },
+
+      async registerUser (){
+
+
+
+      }
+
+    },
+    
 }
 </script>
 

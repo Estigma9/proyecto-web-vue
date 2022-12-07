@@ -42,6 +42,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
   },
+  {
+    path: '/checked',
+    name: 'checked',
+    // route level code-splitting
+    // this generates a separate chunk (checked.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "checked" */ '../views/CheckedView.vue'),
+    meta: {
+      requireAuth: false,
+    }
+  },
 ]
 
 const router = new VueRouter({
@@ -49,5 +60,19 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireAuth)) {
+    if (localStorage.getItem('jwt') == null) {
+      next({
+        path: '/'
+      });
+    } else {
+      next();
+    }
+  }else {
+    next();    
+  }
+});
 
 export default router
