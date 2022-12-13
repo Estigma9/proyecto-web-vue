@@ -181,13 +181,19 @@ export default {
           swal("Oops!", "Algo salió mal!", "error");
         }
       },
-
+      
       async registerUser (){
+        try {
+          let response = await this.$http.post('/api/user/register', this.register);
 
-
-
-      }
-
+          console.log(response);
+          swal("Éxito!!", "Registro correcto", "success");
+          this.$router.push("/login");
+          
+        } catch (e) {
+          swal("Oops!", "Algo salió mal con tu registro!", "error");
+        }
+      },
     },
     
 }

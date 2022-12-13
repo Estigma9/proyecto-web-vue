@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 const UserModel = require('./users');
 
 
-const sequelize = new Sequelize('database', 'username', 'password', {
-    host: 'localhost',
-    port: '3306',
+const sequelize = new Sequelize('railway', 'postgres', 'zvika6T18IirypeVmSda', {
+    host: 'containers-us-west-159.railway.app',
+    port: '5633',
     dialect: 'postgres'
 });
 
